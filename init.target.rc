@@ -62,6 +62,9 @@ on post-fs
     setrlimit 8 67108864 67108864
     write /dev/ipa 1
 
+    # disable nfc
+    mount none /dev/null /vendor/etc/permissions/android.hardware.nfc.xml bind
+
 on late-fs
     wait_for_prop hwservicemanager.ready true
     exec_start wait_for_keymaster
@@ -396,4 +399,19 @@ service vendor.contexthub-hal-1-0 /vendor/bin/hw/android.hardware.contexthub@1.0
     interface android.hardware.contexthub@1.0::IContexthub default
     user system
     group system
+    disabled
+
+service nqnfcinfo /vendor/bin/nqnfcinfo
+    class late_start
+    group nfc
+    user system
+    oneshot
+    override
+    disabled
+
+service nqnfc_2_0_hal_service /vendor/bin/hw/vendor.nxp.hardware.nfc@2.0-service
+    class hal
+    user nfc
+    group nfc
+    override
     disabled
