@@ -279,6 +279,11 @@ else
    ODM_MANIFEST_FILES += device/qcom/$(MSMSTEPPE)/manifest-generic.xml
 endif
 
+# Surya Overlays
+PRODUCT_PACKAGES += \
+    SuryaFrameworks \
+    SuryaSystemUI
+
 # Target specific Netflix custom property
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.netflix.bsp_rev=Q6150-17263-1
