@@ -1,9 +1,9 @@
-/WLAN_CHIPSET := qca_cld3
+WLAN_CHIPSET := qca_cld3
 
 #WPA
 WPA := wpa_cli
 
-PRODUCT_PACKAGES += $(WLAN_CHIPSET)_wlan.ko
+#PRODUCT_PACKAGES += $(WLAN_CHIPSET)_wlan.ko
 PRODUCT_PACKAGES += wifilearner
 PRODUCT_PACKAGES += $(WPA)
 
